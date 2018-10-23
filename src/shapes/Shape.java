@@ -13,6 +13,16 @@ public abstract class Shape {
         p=new Point[c];
         index=0;        
     }
+    
+    //copy constructor
+    public Shape (Shape s){
+        index=0;
+        capacity=s.getP().length;
+        p=new Point[capacity];
+        for (int i=0;i<capacity;i++){
+            p[i]=new Point(s.getP()[i].getX(),s.getP()[i].getY());
+        }
+    }
 
 //setters & getters=============================================================
 

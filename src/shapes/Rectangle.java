@@ -9,6 +9,10 @@ public class Rectangle extends Shape implements Renderable {
         super(4);
     }   
     
+    public Rectangle (Rectangle r){
+        super(r);                
+    }
+    
 //setters & getters=============================================================
     
 //methods=======================================================================
