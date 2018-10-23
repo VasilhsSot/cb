@@ -1,6 +1,6 @@
 package shapes;
 
-public class Rectangle extends Shape {
+public class Rectangle extends Shape implements Renderable {
 
 //variables=====================================================================
     
@@ -30,10 +30,25 @@ public class Rectangle extends Shape {
         return 2*sideB()+2*sideA();
     }
     
-//    @Override
-//    public void addP(Point p){
-//        
-//    }
+    @Override
+    public void render(){
+        String s="";
+        for (int j=0;j<sideA();j++){
+            if (j==sideA()-1){ s+=" *";}
+            else {s+="  ";}
+        }
+        for(int i=0;i<=sideA();i++){
+            System.out.print("* ");
+        }
+        System.out.print("\n");
+        for(int i=1;i<sideB()-1;i++){
+            System.out.println("*"+s);
+        }
+        for (int i=0;i<=sideA();i++){
+            System.out.print("* ");
+        }
+        System.out.print("\n");
+    }
     
     @Override
     public String toString(){
