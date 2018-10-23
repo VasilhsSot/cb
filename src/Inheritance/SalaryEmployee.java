@@ -16,7 +16,7 @@ public class SalaryEmployee extends Employee {
 //setters & getters=============================================================
 
     public void setSalary(double salary) {
-        this.salary = salary;
+        this.salary = salary; 
     }
     public double getSalary() {
         return salary;
