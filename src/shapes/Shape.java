@@ -45,6 +45,8 @@ public abstract class Shape {
     public abstract double perimeter();
     public abstract double area();
     
+    
+    
     public void addP(Point point){
         this.getP()[this.getIndex()]=point;
         this.setIndex(this.getIndex()+1);
