@@ -26,7 +26,7 @@ public class Main {
         tr1.addP(p4);
         tr1.addP(p5);
         tr1.addP(p6);
-        System.out.println(r1.toString()+"\n"+r2.toString()); //+"\n"+c1.toString()+"\n"+tr1.toString());
+        System.out.println(r1+"\n"+r2); //+"\n"+c1.toString()+"\n"+tr1.toString());
 //        System.out.println("Vasi="+tr1.vasi()+" kai ypsos="+tr1.ypsos());
         r2.render();
         r1.render();
