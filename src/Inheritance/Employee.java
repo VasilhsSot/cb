@@ -1,6 +1,6 @@
 package Inheritance;
 
-public class Employee {
+public abstract class Employee implements Payable {
 
 //variables=====================================================================
     private String name;
@@ -63,7 +63,13 @@ public class Employee {
  
 
 //methods=======================================================================
-
+    
+    public abstract double pay();
+    
+    @Override
+    public String toString(){
+        return ("Employee "+name+" gets "+pay());
+    }
 
 //main==========================================================================
 
