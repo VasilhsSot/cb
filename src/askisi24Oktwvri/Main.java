@@ -85,7 +85,7 @@ public static Scanner in=new Scanner(System.in);
                     break;
                     
             case 4: b=false;
-                    System.out.println("That you for choosing our Parking. ");
+                    System.out.println("Thank you for choosing our Parking!! ");
                     break;
             default: System.out.println("Invalid input. Please choose 1-4.\n");
                      break;            
@@ -95,8 +95,7 @@ public static Scanner in=new Scanner(System.in);
 
 //main==========================================================================
     public static void main (String args[]){
-        Employee e=new Employee("Kwstas");
-              
+        Employee e=new Employee("Kwstas");              
         Parking p=new Parking(e);
         boolean flag=true;
         System.out.println("Welcome to our Parking. \nFor any help, please refer to mr."+p.getE().getName());
