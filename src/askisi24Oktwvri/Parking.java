@@ -131,7 +131,7 @@ public class Parking implements Chargable {
 //        Vehicle v1=new Car();
 //        String temp= new SimpleDateFormat("dd/MM/yyyy HH:mm").format(Calendar.getInstance().getTime());
 //        v1.setTimeIn(temp);
-//        v1.setTimeOut("24/10/2018 16:55");
+//        v1.setTimeOut("24/10/2018 18:55");
 //        DecimalFormat df=new DecimalFormat("#.##");
 //
 //        System.out.println("Rate="+v1.getRate()+" Total payment: "+df.format(p.pay(v1)));
