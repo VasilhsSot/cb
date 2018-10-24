@@ -20,7 +20,7 @@ public class Ticket {
    public static void exportTicket(Vehicle v, int k){
        try{
        w=new PrintWriter(new FileOutputStream(new File("ticket.txt")));
-       w.write(v.getColor()+" "+v.getBrand()+" "+v.getModel()+" with plate number: "+v.getAK()+" has been stored to position "+k+" in the parking on "+v.getTimeIn()+".");
+       w.write("Your vehicle, a "+v.getColor()+" "+v.getBrand()+" "+v.getModel()+" with plate number: "+v.getAK()+", has been stored to position '"+k+"' in the parking on "+v.getTimeIn()+".");
        }catch(FileNotFoundException e){e.printStackTrace();}
        w.close();
    }
