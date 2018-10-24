@@ -9,7 +9,7 @@ public class WeeklyProjectOne {
 
 public static void main (String args[]) throws FileNotFoundException, IOException{
     //variables for current time and date
-    String t = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());   //current time
+    String t = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format(Calendar.getInstance().getTime());   //current time
     String d = new SimpleDateFormat("dd/MM/yyyy").format(Calendar.getInstance().getTime()); //current date
     
     //check if 0,1 or >2 arguments given
