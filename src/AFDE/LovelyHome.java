@@ -17,6 +17,9 @@ public class LovelyHome {
         class AClass {  //method local inner class (internal class), not public (apagorevetai 2i public class sto idio arxeio).
             AClass (){  //Eksw apo to swma tou constructor den mporei na tin anagnwrisei.
                 System.out.println("AClass");
+                class BClass{
+                    
+                }
             }
         }
         AClass aclass = new AClass();
