@@ -48,6 +48,14 @@ public class Bunny implements Comparable {
             int comparehop=((Bunny)t).getBunnyNumber();
             return this.bunnyNumber-comparehop;
         }
+    @Override
+    public boolean equals(Object o){
+        if (o==this){return true;}
+        if (o==null){return false;}
+        if (getClass()!= o.getClass()) {return false;}
+        Bunny b= (Bunny)o;
+        return ((name==b.name || (name!=null && name.equals(b.name))) && (bunnyNumber==b.bunnyNumber));
+    }
     
     
 
