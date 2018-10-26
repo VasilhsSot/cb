@@ -1,12 +1,7 @@
 package AFDE;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
-import java.util.TreeMap;
+import java.util.*;
+
 
 public class Bunny implements Comparable {
 
@@ -67,14 +62,17 @@ public class Bunny implements Comparable {
     }
     
     
+    
 
 //main==========================================================================
     public static void main (String args[]){
         List<Bunny> bunnylist= new ArrayList<Bunny>();
         Map<String,Bunny> bunnymap=new TreeMap<String , Bunny>();
+        HashMap<String,Bunny> map=new HashMap<String,Bunny>();
+        HashSet<Bunny>hset=new HashSet<Bunny>();
         Bunny b1=new Bunny("bugs",6);
         Bunny b0=new Bunny("bugs",6);
-        Bunny b2=new Bunny("rocky",19);
+        Bunny b2=new Bunny("Bunny2",2);
         Bunny b3=new Bunny("Ben",55);
         Bunny b4=new Bunny("rex",2);
         Bunny b5=new Bunny("aww",9);
@@ -95,45 +93,51 @@ public class Bunny implements Comparable {
         bunnymap.put(b5.getName(), b5);
         bunnymap.put(b6.getName(), b6);
         bunnymap.put(b7.getName(), b7);
-        bunnylist.add(b1);
-        bunnylist.add(b2);
-        bunnylist.add(b3);
-        bunnylist.add(b4);
-        bunnylist.add(b5);
-        bunnylist.add(b6);
-        bunnylist.add(b9);
-        bunnylist.add(b7);
-        bunnylist.add(b8);
-        bunnylist.add(b10);
-        bunnylist.add(b11);
-        bunnylist.add(b12);
-        bunnylist.add(b13);
-        bunnylist.add(b14);
-        bunnylist.add(b15);
+        for (int i=1;i<=15;i++){
+            map.put("Bunny"+i, new Bunny("Bunny"+i,i));
+            hset.add(new Bunny("Bunny"+i,i));
+        }
+        System.out.println(map.containsKey("Bunny14"));
+        System.out.println(hset.contains(b2));
+//        bunnylist.add(b1);
+//        bunnylist.add(b2);
+//        bunnylist.add(b3);
+//        bunnylist.add(b4);
+//        bunnylist.add(b5);
+//        bunnylist.add(b6);
+//        bunnylist.add(b9);
+//        bunnylist.add(b7);
+//        bunnylist.add(b8);
+//        bunnylist.add(b10);
+//        bunnylist.add(b11);
+//        bunnylist.add(b12);
+//        bunnylist.add(b13);
+//        bunnylist.add(b14);
+//        bunnylist.add(b15);
         
-        for (Bunny b: bunnylist){
-            b.hop();
-        }
-        System.out.println("\n\n");
-        System.out.println("b1.equals(b0)= "+b1.equals(b0));
-        System.out.println("\n\n");
-        for (int i=0;i<bunnylist.size();i++){
-            bunnylist.get(i).hop();
-        }
+//        for (Bunny b: bunnylist){
+//            b.hop();
+//        }
+//        System.out.println("\n\n");
+//        System.out.println("b1.equals(b0)= "+b1.equals(b0));
+//        System.out.println("\n\n");
+//        for (int i=0;i<bunnylist.size();i++){
+//            bunnylist.get(i).hop();
+//        }
         
         
-        Collections.sort(bunnylist);
-        System.out.println("\n\n");
-        Iterator<Bunny>itr1=bunnylist.iterator();
-        Iterator<String>itr2=bunnymap.keySet().iterator();
-        while (itr1.hasNext()){
-            itr1.next().hop();
-        }
-        while(itr2.hasNext()){
-            String name=itr2.next();
-            int hop=bunnymap.get(name).getBunnyNumber();
-            System.out.println(hop);
-        }
+//        Collections.sort(bunnylist);
+//        System.out.println("\n\n");
+//        Iterator<Bunny>itr1=bunnylist.iterator();
+//        Iterator<String>itr2=bunnymap.keySet().iterator();
+//        while (itr1.hasNext()){
+//            itr1.next().hop();
+//        }
+//        while(itr2.hasNext()){
+//            String name=itr2.next();
+//            int hop=bunnymap.get(name).getBunnyNumber();
+//            System.out.println(hop);
+//        }
     }
 
 
