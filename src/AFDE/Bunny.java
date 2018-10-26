@@ -57,7 +57,7 @@ public class Bunny implements Comparable {
     public int hashCode() {
         int hash = 5;
         hash = 41 * hash + this.bunnyNumber;
-        hash = 41 * hash + Objects.hashCode(this.name);
+        hash = 41 * hash + Objects.hash(this.name);
         return hash;
     }
     
@@ -99,21 +99,21 @@ public class Bunny implements Comparable {
         }
         System.out.println(map.containsKey("Bunny14"));
         System.out.println(hset.contains(b2));
-//        bunnylist.add(b1);
-//        bunnylist.add(b2);
-//        bunnylist.add(b3);
-//        bunnylist.add(b4);
-//        bunnylist.add(b5);
-//        bunnylist.add(b6);
-//        bunnylist.add(b9);
-//        bunnylist.add(b7);
-//        bunnylist.add(b8);
-//        bunnylist.add(b10);
-//        bunnylist.add(b11);
-//        bunnylist.add(b12);
-//        bunnylist.add(b13);
-//        bunnylist.add(b14);
-//        bunnylist.add(b15);
+        bunnylist.add(b1);
+        bunnylist.add(b2);
+        bunnylist.add(b3);
+        bunnylist.add(b4);
+        bunnylist.add(b5);
+        bunnylist.add(b6);
+        bunnylist.add(b9);
+        bunnylist.add(b7);
+        bunnylist.add(b8);
+        bunnylist.add(b10);
+        bunnylist.add(b11);
+        bunnylist.add(b12);
+        bunnylist.add(b13);
+        bunnylist.add(b14);
+        bunnylist.add(b15);
         
 //        for (Bunny b: bunnylist){
 //            b.hop();
@@ -126,13 +126,13 @@ public class Bunny implements Comparable {
 //        }
         
         
-//        Collections.sort(bunnylist);
+        Collections.sort(bunnylist);
 //        System.out.println("\n\n");
-//        Iterator<Bunny>itr1=bunnylist.iterator();
+        Iterator<Bunny>itr1=bunnylist.iterator();
 //        Iterator<String>itr2=bunnymap.keySet().iterator();
-//        while (itr1.hasNext()){
-//            itr1.next().hop();
-//        }
+        while (itr1.hasNext()){
+            itr1.next().hop();
+        }
 //        while(itr2.hasNext()){
 //            String name=itr2.next();
 //            int hop=bunnymap.get(name).getBunnyNumber();
