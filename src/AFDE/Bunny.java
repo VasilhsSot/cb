@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
 public class Bunny implements Comparable {
@@ -56,6 +57,14 @@ public class Bunny implements Comparable {
         Bunny b= (Bunny)o;
         return ((name==b.name || (name!=null && name.equals(b.name))) && (bunnyNumber==b.bunnyNumber));
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 41 * hash + this.bunnyNumber;
+        hash = 41 * hash + Objects.hashCode(this.name);
+        return hash;
+    }
     
     
 
@@ -64,6 +73,7 @@ public class Bunny implements Comparable {
         List<Bunny> bunnylist= new ArrayList<Bunny>();
         Map<String,Bunny> bunnymap=new TreeMap<String , Bunny>();
         Bunny b1=new Bunny("bugs",6);
+        Bunny b0=new Bunny("bugs",6);
         Bunny b2=new Bunny("rocky",19);
         Bunny b3=new Bunny("Ben",55);
         Bunny b4=new Bunny("rex",2);
@@ -104,6 +114,8 @@ public class Bunny implements Comparable {
         for (Bunny b: bunnylist){
             b.hop();
         }
+        System.out.println("\n\n");
+        System.out.println("b1.equals(b0)= "+b1.equals(b0));
         System.out.println("\n\n");
         for (int i=0;i<bunnylist.size();i++){
             bunnylist.get(i).hop();
