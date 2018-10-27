@@ -3,14 +3,14 @@ package weeklyProject3;
 public class Student {
 
 //variables=====================================================================
-    String name;
-    String lastname;
-    int age;
-    String height;
-    int tuition;
-    String date;
-    int phone;
-    String conduct;
+    private String name;
+    private String lastname;
+    private int age;
+    private String height;
+    private int tuition;
+    private String date;
+    private int phone;
+    private String conduct;
 
 //constructors==================================================================
     public Student(){}
