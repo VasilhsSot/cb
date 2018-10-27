@@ -23,7 +23,7 @@ public class Student {
         this.tuition= tuition;
         this.date=date;
         this.phone=phone;
-        conduct="good";
+        conduct="Good";
     }
 
 
