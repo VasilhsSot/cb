@@ -6,7 +6,7 @@ public class Student {
     String name;
     String lastname;
     int age;
-    double height;
+    String height;
     int tuition;
     String date;
     int phone;
@@ -15,7 +15,7 @@ public class Student {
 //constructors==================================================================
     public Student(){}
     
-    public Student (String name,String lastname,int age, double height, int tuition, String date, int phone) {
+    public Student (String name,String lastname,int age, String height, int tuition, String date, int phone) {
         this.name=name;
         this.lastname=lastname;
         this.age=age;
@@ -44,7 +44,7 @@ public class Student {
         this.age = age;
     }
 
-    public void setHeight(double height) {
+    public void setHeight(String height) {
         this.height = height;
     }
 
@@ -72,7 +72,7 @@ public class Student {
         return age;
     }
 
-    public double getHeight() {
+    public String getHeight() {
         return height;
     }
 
@@ -93,9 +93,10 @@ public class Student {
     }
 
 //methods=======================================================================
-    
-    
+    @Override
+    public String toString(){
+        return (getName()+" , "+getLastname()+" , "+getAge()+" , "+getHeight()+" , "+getTuition()+" , "+getDate()+" , "+getPhone()+" , "+getConduct());
+    }
+        
 //main==========================================================================
-
-
 }//~class
