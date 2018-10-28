@@ -17,17 +17,25 @@ public class Main {
     public static Scanner in=new Scanner(System.in);
 
 //methods=======================================================================
-    //for sorting by student's last name.
-    public static Comparator<Student> StudentLastNameComp = new Comparator<Student>() {
+    //for sorting by student's last name ascending.
+    public static Comparator<Student> StudentLastNameCompAsc = new Comparator<Student>() {
         @Override
 	public int compare(Student s1, Student s2) {
 	   String StudentLastName1 = s1.getLastname().toUpperCase();
 	   String StudentLastName2 = s2.getLastname().toUpperCase();
            return StudentLastName1.compareTo(StudentLastName2);
     }};
+    //for sorting by student's last name descending.
+    public static Comparator<Student> StudentLastNameCompDesc = new Comparator<Student>() {
+        @Override
+	public int compare(Student s1, Student s2) {
+	   String StudentLastName1 = s1.getLastname().toUpperCase();
+	   String StudentLastName2 = s2.getLastname().toUpperCase();
+           return StudentLastName2.compareTo(StudentLastName1);
+    }};
     
-    //for sorting by student's age.
-    public static Comparator<Student> StudentAgeComp = new Comparator<Student>() {
+    //for sorting by student's age ascending.
+    public static Comparator<Student> StudentAgeCompAsc = new Comparator<Student>() {
         @Override
 	public int compare(Student s1, Student s2) {
 	   int age1 = s1.getAge();
@@ -35,13 +43,31 @@ public class Main {
 	   return age1-age2;	   
    }};
     
-    //for sorting by student's phone number.
-    public static Comparator<Student> StudentPhoneComp = new Comparator<Student>() {
+    //for sorting by student's age descending.
+    public static Comparator<Student> StudentAgeCompDesc = new Comparator<Student>() {
+        @Override
+	public int compare(Student s1, Student s2) {
+	   int age1 = s1.getAge();
+	   int age2 = s2.getAge();
+	   return age2-age1;	   
+   }};
+    
+    //for sorting by student's phone number ascending.
+    public static Comparator<Student> StudentPhoneCompAsc = new Comparator<Student>() {
         @Override
 	public int compare(Student s1, Student s2) {
 	   int phone1 = s1.getPhone();
 	   int phone2 = s2.getPhone();
 	   return phone1-phone2;	   
+   }};
+    
+    //for sorting by student's phone number descending.
+    public static Comparator<Student> StudentPhoneCompDesc = new Comparator<Student>() {
+        @Override
+	public int compare(Student s1, Student s2) {
+	   int phone1 = s1.getPhone();
+	   int phone2 = s2.getPhone();
+	   return phone2-phone1;	   
    }};
    
     public static int extractInt(String str) {
@@ -82,27 +108,40 @@ public class Main {
         while (itr.hasNext()){
             System.out.println(itr.next());// using the toString() method.
         }
+        System.out.print("\n");
     }
     
     //decides what kind of sort to do to the list.
     public static boolean switchSort(String s, List<Student> list){
         boolean b=true;
         switch (s) {
-            case "1": Collections.sort(list, Main.StudentLastNameComp);
-                      System.out.println("Sort of the list completed.");
+            case "1": Collections.sort(list, Main.StudentLastNameCompAsc);
+                      System.out.println("Sort of the list completed.\n");
                       b=false;
                       break;
-            case "2": Collections.sort(list, Main.StudentAgeComp);
-                      System.out.println("Sort of the list completed.");
+            case "2": Collections.sort(list, Main.StudentLastNameCompDesc);
+                      System.out.println("Sort of the list completed.\n");
                       b=false;
                       break;
-            case "3": Collections.sort(list, Main.StudentPhoneComp);
-                      System.out.println("Sort of the list completed.");
+            case "3": Collections.sort(list, Main.StudentAgeCompAsc);
+                      System.out.println("Sort of the list completed.\n");
                       b=false;
                       break;
-            case "4": b=false;
+            case "4": Collections.sort(list, Main.StudentAgeCompDesc);
+                      System.out.println("Sort of the list completed.\n");
+                      b=false;
                       break;
-            default : System.out.println("Invalid input. Please select 1-4. ");
+            case "5": Collections.sort(list, Main.StudentPhoneCompAsc);
+                      System.out.println("Sort of the list completed.\n");
+                      b=false;
+                      break;
+            case "6": Collections.sort(list, Main.StudentPhoneCompDesc);
+                      System.out.println("Sort of the list completed.\n");
+                      b=false;
+                      break;
+            case "7": b=false;
+                      break;
+            default : System.out.println("Invalid input. Please select 1-7. ");
                       break;
         }
         return b;
@@ -116,11 +155,14 @@ public class Main {
                         break;
                       
             case "2":   while(b){                        
-                            System.out.println("\nYou chose to sort the list. \nChoose 1-4 please.");
-                            System.out.println("1. Sort by student's last name. ");
-                            System.out.println("2. Sort by student's age. ");
-                            System.out.println("3. Sort by student's phone number. ");
-                            System.out.println("4. Go back.");
+                            System.out.println("\nYou chose to sort the list. \nChoose 1-7 please.");
+                            System.out.println("1. Sort by student's last name ascending. ");
+                            System.out.println("2. Sort by student's last name descending. ");
+                            System.out.println("3. Sort by student's age ascending. ");
+                            System.out.println("4. Sort by student's age descending. ");
+                            System.out.println("5. Sort by student's phone number ascending. ");
+                            System.out.println("6. Sort by student's phone number descending. ");
+                            System.out.println("7. Go back.");
                             String s=in.nextLine();
                             b=switchSort(s , list);
                         }
