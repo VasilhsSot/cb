@@ -1,8 +1,7 @@
 package individualProject;
 
 import java.security.Key;
-import javax.crypto.KeyGenerator;
-import sun.security.provider.MD5;
+
 
 public class User {
 
@@ -32,6 +31,7 @@ public class User {
     public void setKey(Key key) {
         this.key = key;
     }
+    
     public String getUsername() {
         return username;
     }
