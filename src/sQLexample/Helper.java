@@ -36,23 +36,19 @@ public static void closeDBConnection (Connection con) throws SQLException {
 public static void main (String args[]) throws SQLException{
     Statement stmt=null;
     String query= "select customers.cname as Name, count(sales.ccode) as total_purchases from customers left join sales on sales.Ccode = customers.Ccode group by customers.cname order by count(sales.ccode) desc";
-    //Connection con = getDBConnection();
-    
-    Connection con = DriverManager.getConnection("jdbc:mysql://localhost/?user=root&password=Oldmanschild88"); 
-    stmt=con.createStatement();
-    int Result=stmt.executeUpdate("CREATE DATABASE telcatalog2");
-//    try {
-//        stmt = con.createStatement();
-//        ResultSet rs = stmt.executeQuery(query);
-//        while (rs.next()) {
-//            String customers = rs.getString("Name");
-//            int count = rs.getInt("total_purchases");
-//            System.out.printf("%-20s  %-2s \n",customers , count);
-//        }
-//    } catch (SQLException e ) {
-//        e.printStackTrace();
-//    } finally {
-//        if (stmt != null) { stmt.close(); }
-//    }
+    Connection con = getDBConnection();
+    try {
+        stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            String customers = rs.getString("Name");
+            int count = rs.getInt("total_purchases");
+            System.out.printf("%-20s  %-2s \n",customers , count);
+        }
+    } catch (SQLException e ) {
+        e.printStackTrace();
+    } finally {
+        if (stmt != null) { stmt.close(); }
+    }
 }//~main
 }//~class
