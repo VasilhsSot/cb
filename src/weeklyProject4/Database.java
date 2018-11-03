@@ -32,6 +32,7 @@ public class Database {
             stm.executeUpdate(sql);
         } catch (SQLException ex) {
             System.out.println("Could not execute the statement. ");
+            ex.printStackTrace();
         }
     }
     

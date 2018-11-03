@@ -39,11 +39,13 @@ public class Main {
     
     public static void showStudent(String first_name, String last_name){
         boolean b=true;
+        Student s;
         Iterator<Student>itr=list1.iterator();
         while (itr.hasNext()){
-            if (first_name.equals(itr.next().getFirst_name()) && last_name.equals(itr.next().getLast_name())){
+            s=itr.next();
+            if (first_name.equals(s.getFirst_name()) && last_name.equals(s.getLast_name())){
                 b=false;
-                System.out.println(itr.next());// using the toString() method.
+                System.out.println(s);// using the toString() method.
             }
         }
         if (b){System.out.println("We couldn't find the student with the information you provided. ");}
@@ -52,11 +54,13 @@ public class Main {
     
     public static void showWorker(String first_name, String last_name){
         boolean b=true;
+        Worker w;
         Iterator<Worker>itr=list2.iterator();
         while (itr.hasNext()){
-            if(first_name.equals(itr.next().getFirst_name()) && last_name.equals(itr.next().getLast_name()))
+            w=itr.next();
+            if(first_name.equals(w.getFirst_name()) && last_name.equals(w.getLast_name()))
                 b=false;
-                System.out.println(itr.next());// using the toString() method.
+                System.out.println(w);// using the toString() method.
         }
         if(b) {System.out.println("We couldn't find the worker with the information you provided. ");}
         System.out.print("\n");
@@ -101,7 +105,7 @@ public class Main {
      return l;
     }
     
-    public static void insertSt(){
+    public static void insertSt() throws SQLException{
         boolean bool1=false, bool2=false, bool3=false;
         String n="",la="",fa="";
         while (!bool1){
@@ -129,11 +133,12 @@ public class Main {
                 bool3=true;
             } else {System.out.println("Faculty number length should be 5-10 digits or letters. ");}
         }
-        String q= "insert into students (`first_name`, `last_name`, `faculty_number`) values (null,"+n+","+la+","+fa+");";
+        String q= "INSERT INTO students (id,first_name,last_name,faculty_number) values (null,'"+n+"','"+la+"','"+fa+"');";
         db.executeStatement(q);
+        list1=createStudentList(); //update list
     }
     
-    public static void insertWo(){
+    public static void insertWo() throws SQLException{
         boolean bool1=false, bool2=false, bool3=false, bool4=false;
         String n="",la="",wss="",whs="";
         double ws=0.0,wh=0.0;
@@ -171,11 +176,12 @@ public class Main {
                 bool4=true;
             } else {System.out.println("Working hours per day should be 1-12. ");}
         }
-        String q= "insert into workers (`first_name`, `last_name`, `week_salary`,`work_hours`) values (null,"+n+","+la+","+ws+","+wh+");";
-        db.executeStatement(q);
+        String qu= "INSERT INTO workers (id,first_name,last_name,week_salary,work_hours) values (null,'"+n+"','"+la+"',"+ws+","+wh+");";
+        db.executeStatement(qu);        
+        list2=createWorkerList(); //update list
     }
     
-    public static boolean switchCh (String ch){
+    public static boolean switchCh (String ch) throws SQLException{
         boolean flag =true, b=true;
         String n,l;
         switch (ch) {
@@ -206,9 +212,8 @@ public class Main {
     
 //main==========================================================================
     public static void main (String args[]) throws SQLException{
-        String url= "jdbc:mysql://localhost:3306/humanity";
-//        db.connect(url,"admin","admin");
-        db.connection=DriverManager.getConnection(url,"admin","admin");
+        String url= "jdbc:mysql://127.0.0.1:3306/humanity";
+        db.connect(url,"admin","admin");
         list1=createStudentList();
         list2=createWorkerList();
         boolean flag=true;
@@ -218,5 +223,6 @@ public class Main {
             ch=sc.nextLine();
             flag=switchCh(ch);
         }
+        db.connection.close();
     }//~main
 }//~class
