@@ -45,9 +45,18 @@ public int executeStatement (String sql) {
 //main==========================================================================
 public static void main (String args[]){
     Database db=new Database();
-    String url="jdbc:mysql://localhost/";
+    String url="jdbc:mysql://localhost:3306/telcatalog_2";
     db.connect(url, "root", "Oldmanschild88");
-    int k=db.executeStatement("create database telcatalog_2");
+    int k=db.executeStatement("CREATE TABLE `contacts` (\n" +
+"  `id` int(11) NOT NULL AUTO_INCREMENT,\n" +
+"  `first_name` varchar(50) NOT NULL,\n" +
+"  `last_name` varchar(50) NOT NULL,\n" +
+"  `twitter` varchar(30) DEFAULT NULL,\n" +
+"  `facebook` varchar(30) DEFAULT NULL,\n" +
+"  `instagram` varchar(30) DEFAULT NULL,\n" +
+"  PRIMARY KEY (`id`),\n" +
+"  KEY `con_fname_idx` (`first_name`)\n" +
+") ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1");
     System.out.println(k);
     
 }
