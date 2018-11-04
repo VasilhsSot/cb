@@ -3,11 +3,9 @@ package weeklyProject4;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+
 
 public class Main {
 //variables=====================================================================
@@ -17,15 +15,6 @@ public class Main {
     public static Database db=new Database();
 
 //methods=======================================================================
-    public static int extractInt(String str) {
-        Matcher matcher = Pattern.compile("\\d+").matcher(str);
-
-        if (!matcher.find())
-            throw new NumberFormatException("For input string [" + str + "]");
-
-        return Integer.parseInt(matcher.group());
-    }
-    
     public static void showMenu(){
         System.out.println("Choose one of the following: ");
         System.out.println("1. Show a student from the list. ");
