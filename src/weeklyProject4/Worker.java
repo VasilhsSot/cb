@@ -10,7 +10,11 @@ public class Worker extends Human {
         week_salary=0.0;
         work_hours=0.0;
     }
-
+    public Worker(String first_name, String last_name,double week_salary, double work_hours){
+        super(first_name, last_name);
+        this.week_salary=week_salary;
+        this.work_hours=work_hours;
+    }
 
 
 //setters & getters=============================================================

@@ -37,70 +37,56 @@ public class Main {
     
     public static void showStudent(String first_name, String last_name){
         boolean b=true;
-        Student s;
-        Iterator<Student>itr=list1.iterator();
-        while (itr.hasNext()){
-            s=itr.next();
-            if (first_name.equals(s.getFirst_name()) && last_name.equals(s.getLast_name())){
+        for(Student s: list1){
+            if (s.getFirst_name().equals(first_name) && s.getLast_name().equals(last_name)){
+                System.out.println("\n"+s);// using the toString() method. 
                 b=false;
-                System.out.println(s);// using the toString() method.
-            }
+            }            
         }
-        if (b){System.out.println("We couldn't find the student with the information you provided. ");}
-        System.out.print("\n");
+        if (b){System.out.println("We couldn't find the student with the information you provided. \n");}
     }
     
     public static void showWorker(String first_name, String last_name){
         boolean b=true;
-        Worker w;
-        Iterator<Worker>itr=list2.iterator();
-        while (itr.hasNext()){
-            w=itr.next();
-            if(first_name.equals(w.getFirst_name()) && last_name.equals(w.getLast_name()))
+        for(Worker w: list2){
+            if (w.getFirst_name().equals(first_name) && w.getLast_name().equals(last_name)){
                 b=false;
-                System.out.println(w);// using the toString() method.
+                System.out.println("\n"+w);// using the toString() method.                
+            }
+        if(b) {System.out.println("We couldn't find the worker with the information you provided. \n");}
         }
-        if(b) {System.out.println("We couldn't find the worker with the information you provided. ");}
-        System.out.print("\n");
     }
     
     public static List<Student> createStudentList() throws SQLException{
-        List<Student> l=new ArrayList<>();
-        Student b=new Student();
+        List<Student> l1=new ArrayList<>();
         String q="select first_name,last_name,faculty_number from students;";
         try{
         db.stm=db.connection.createStatement();
         ResultSet rs=db.stm.executeQuery(q);
         while(rs.next()){
-            b.setFirst_name(rs.getString("first_name"));
-            b.setLast_name(rs.getString("last_name"));
-            b.setFaculty(rs.getString("faculty_number"));
-            l.add(b);
-        }
+            Student b= new Student(rs.getString("first_name"),rs.getString("last_name"),rs.getString("faculty_number"));
+            l1.add(b);
+            }
         } catch (SQLException e){
             System.out.println("Problem with your query. ");
         }
-     return l;
+     return l1;
     }
     
     public static List<Worker> createWorkerList() throws SQLException{
-        List<Worker> l=new ArrayList<>();
-        Worker b=new Worker();
+        List<Worker> l2=new ArrayList<>();        
         String q="select first_name,last_name,week_salary,work_hours from workers;";
         try{
         db.stm=db.connection.createStatement();
         ResultSet rs=db.stm.executeQuery(q);
         while(rs.next()){
-            b.setFirst_name(rs.getString("first_name"));
-            b.setLast_name(rs.getString("last_name"));
-            b.setWeek_salary(rs.getDouble("week_salary"));
-            b.setWork_hours(rs.getDouble("work_hours"));
-            l.add(b);
+            Worker b=new Worker(rs.getString("first_name"),rs.getString("last_name"),rs.getDouble("week_salary"),rs.getDouble("work_hours"));
+            l2.add(b);
         }
         } catch (SQLException e){
             System.out.println("Problem with your query. ");
         }
-     return l;
+     return l2;
     }
     
     public static void insertSt() throws SQLException{
@@ -134,6 +120,7 @@ public class Main {
         String q= "INSERT INTO students (id,first_name,last_name,faculty_number) values (null,'"+n+"','"+la+"','"+fa+"');";
         db.executeStatement(q);
         list1=createStudentList(); //update list
+        System.out.println("Student has been inserted successfully. \n");
     }
     
     public static void insertWo() throws SQLException{
@@ -177,24 +164,25 @@ public class Main {
         String qu= "INSERT INTO workers (id,first_name,last_name,week_salary,work_hours) values (null,'"+n+"','"+la+"',"+ws+","+wh+");";
         db.executeStatement(qu);        
         list2=createWorkerList(); //update list
+        System.out.println("Worker has been inserted successfully. \n");
     }
     
     public static boolean switchCh (String ch) throws SQLException{
         boolean flag =true, b=true;
-        String n,l;
+        String sn,sl,wn,wl;
         switch (ch) {
             case "1":   System.out.println("Please give the first name of the student you are looking for.. ");
-                        n=sc.nextLine();
+                        sn=sc.nextLine();
                         System.out.println("Pease give the last name of the student you are looking for.. ");
-                        l=sc.nextLine();
-                        showStudent(n,l);
+                        sl=sc.nextLine();
+                        showStudent(sn,sl);
                         break;
                       
             case "2":   System.out.println("Please give the first name of the worker you are looking for.. ");
-                        n=sc.nextLine();
+                        wn=sc.nextLine();
                         System.out.println("Pease give the last name of the worker you are looking for.. ");
-                        l=sc.nextLine();
-                        showWorker(n,l);
+                        wl=sc.nextLine();
+                        showWorker(wn,wl);
                         break;
             case "3":   insertSt();                        
                         break;
@@ -221,6 +209,7 @@ public class Main {
             ch=sc.nextLine();
             flag=switchCh(ch);
         }
+        sc.close();
         db.connection.close();
     }//~main
 }//~class
